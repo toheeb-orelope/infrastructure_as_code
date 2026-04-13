@@ -1,0 +1,39 @@
+terraform fmt = format 
+terraform init = to initiate terraform
+terraform plan = To see any changes
+terraform apply = To apply the changes
+terraform apply -auto-approve = this will skip some 
+terraform state list
+terraform state show nameofresource = view a specific resource state
+terraform show = view all the resource states
+terraform apply -destroy = This will destroy everything we have created
+terraform plan -destroy = This will show what is going to be destroyed
+terraform apply -replace nameofresource = To replace a re
+terraform apply -refresh-only = refresh
+terraform output = retrieve output data
+terraform destroy -auto-approve = To delete
+template console = to quick verify state of command
+
+
+terraform plan -out=tfplan
+# review or approval step
+terraform apply tfplan
+The 2 above commands means (Saves the exact execution plan
+Apply uses that exact plan)
+
+
+To generate SSH key
+ssh-keygen -t rsa
+
+ssh -i ~/.ssh/azurekey adminuser@20.102.82.183 (replace with your public IP)
+lsb-release -a = View version of the ssh
+
+
+TPL is the extension using for template file
+
+Remove the old key for an IP (ssh-keygen -R 20.102.82.183)
+rm -rf ~/.vscode-server clear vscode server
+
+
+ANother way of overriding a variable
+We can run it by terraform console -var-file="OSX.tfvars" and it will override the default value of vm_os variable to "linux".
