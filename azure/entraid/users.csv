@@ -1,0 +1,31 @@
+first_name,last_name,department,job_title,password,account_enabled
+John,Smith,IT,System Administrator,JoSm01Uo6$,TRUE
+Emma,Johnson,HR,HR Manager,EmJo02Qt2@,TRUE
+Liam,Williams,Sales,Sales Executive,LiWi03Lo5&,TRUE
+Olivia,Brown,Marketing,Marketing Specialist,OlBr04Jk5@,TRUE
+Noah,Jones,IT,Cloud Engineer,NoJo05Qa6#,TRUE
+Ava,Garcia,HR,Recruiter,AvGa06Px8$,TRUE
+Ethan,Miller,Sales,Account Manager,EtMi07My7!,TRUE
+Sophia,Davis,Marketing,Content Strategist,SoDa08Xp6!,TRUE
+Mason,Rodriguez,IT,DevOps Engineer,MaRo09Ku0#,TRUE
+Isabella,Martinez,HR,HR Assistant,IsMa10Ce2&,TRUE
+Logan,Hernandez,Sales,Sales Representative,LoHe11Sm9*,TRUE
+Mia,Lopez,Marketing,SEO Analyst,MiLo12Fo7*,TRUE
+Lucas,Gonzalez,IT,Security Analyst,LuGo13Rw7*,TRUE
+Charlotte,Wilson,HR,People Operations Specialist,ChWi14Oy7!,TRUE
+Elijah,Anderson,Sales,Business Development Rep,ElAn15Ic6#,TRUE
+Amelia,Thomas,Marketing,Brand Manager,AmTh16Dt3@,TRUE
+James,Taylor,IT,Network Engineer,JaTa17Wz1#,TRUE
+Harper,Moore,HR,Talent Acquisition Specialist,HaMo18Jj6@,TRUE
+Benjamin,Jackson,Sales,Sales Manager,BeJa19Xv8!,TRUE
+Evelyn,Martin,Marketing,Digital Marketer,EvMa20Bz0$,TRUE
+Alexander,Lee,IT,Software Engineer,AlLe21Dc9@,TRUE
+Abigail,Perez,HR,HR Coordinator,AbPe22Kl8#,TRUE
+Henry,Thompson,Sales,Inside Sales Rep,HeTh23Xe1!,TRUE
+Emily,White,Marketing,Social Media Manager,EmWh24Ta9*,TRUE
+Daniel,Harris,IT,IT Support Specialist,DaHa25Iv9$,TRUE
+Elizabeth,Sanchez,HR,HR Generalist,ElSa26Ey4$,TRUE
+Matthew,Clark,Sales,Regional Sales Manager,MaCl27Bv9$,TRUE
+Sofia,Ramirez,Marketing,Marketing Analyst,SoRa28Jg1!,TRUE
+Jackson,Lewis,IT,Cloud Architect,JaLe29Nl0#,TRUE
+Avery,Robinson,HR,Learning and Development Officer,AvRo30Nm5!,TRUE

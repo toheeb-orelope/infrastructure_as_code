@@ -1,0 +1,2 @@
+connect tenant ID: $env:ARM_TENANT_ID = "f52a1935-4e59-4af8-9c2f-e4e055cb367d"
+connect subscription id: $env:ARM_SUBSCRIPTION_ID = "fac7c7e0-b3f6-4b53-b639-a5c7d56e9952"
