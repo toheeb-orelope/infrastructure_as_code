@@ -13,6 +13,7 @@ terraform apply -refresh-only = refresh
 terraform output = retrieve output data
 terraform destroy -auto-approve = To delete
 template console = to quick verify state of command
+terraform validate 
 
 
 terraform plan -out=tfplan

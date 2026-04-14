@@ -1,14 +1,16 @@
 # Infrastructure as Code
 
-This repository contains Terraform configurations for two Azure-focused areas:
+This repository contains Terraform configurations for three Azure-focused areas:
 
 - `azure/compute-network` for Azure infrastructure and a Linux VM
 - `azure/entraid` for Microsoft Entra ID users, groups, memberships, and Azure RBAC assignments
+- `azure/sentinel` for Microsoft Sentinel onboarding, data collection, analytics, and automation
 
 ## Repository Structure
 
 - `azure/compute-network` - Azure resource group, network, NSG, public IP, NIC, and Linux VM
 - `azure/entraid` - Entra ID users, groups, group membership assignments, and role assignments
+- `azure/sentinel` - Sentinel workspace onboarding, log ingestion, analytics rules, and playbook automation rules
 - `.gitignore` - root ignore rules for Terraform cache, state, and local config files
 
 ## Module Overview
@@ -74,14 +76,46 @@ Important current settings:
 - `CISO` is assigned the `Contributor` role at subscription scope
 - Other listed groups are assigned the `Reader` role at subscription scope
 
+### `azure/sentinel`
+
+This module configures a Microsoft Sentinel proof-of-concept environment.
+
+It currently:
+
+- Creates a resource group in `eastus`
+- Creates a Log Analytics workspace
+- Onboards that workspace to Microsoft Sentinel
+- Connects Microsoft Defender for Cloud to the workspace
+- Sends Entra ID audit and sign-in logs to Log Analytics
+- Sends Azure Activity logs to Log Analytics
+- Creates a scheduled Sentinel analytics rule for out-of-hours privileged role assignments
+- Creates Sentinel automation rules that trigger a Logic App playbook when incidents are created
+
+Relevant files:
+
+- `azure/sentinel/main.tf`
+- `azure/sentinel/automations.tf`
+- `azure/sentinel/versions.tf`
+
+Important current settings:
+
+- AzureRM provider version is pinned to `4.1.0`
+- The Log Analytics workspace name is `LAW-Sentinel-CloudScale`
+- The Sentinel resource group name is `RG-Sentinel-PoC`
+- The scheduled rule query looks for successful `Microsoft.Authorization/roleAssignments/write` activity outside business hours
+- The automation rule uses a `condition_json` filter against `IncidentRelatedAnalyticRuleIds`
+- The playbook target is a Logic App workflow named `OutOfHoursRole`
+- Automation rule resource `name` values must be UUIDs, while readable labels belong in `display_name`
+
 ## Prerequisites
 
-Before using either module, make sure you have:
+Before using any module, make sure you have:
 
 - Terraform installed
 - An Azure account with permission to manage the target subscription and tenant
 - Azure authentication configured locally
 - Permission to create Entra ID users, groups, and Azure role assignments
+- Permission to create and manage Sentinel resources, diagnostic settings, and Logic App integrations
 
 For `azure/compute-network`, you also need:
 
@@ -111,6 +145,16 @@ terraform plan
 terraform apply
 ```
 
+### Sentinel
+
+```powershell
+cd azure/sentinel
+terraform fmt
+terraform init
+terraform plan
+terraform apply
+```
+
 Useful commands for either module:
 
 ```powershell
@@ -128,6 +172,11 @@ The Entra ID folder includes command notes in `azure/entraid/cmd.txt` showing en
 
 Review and set credentials appropriately before running Terraform.
 
+The Sentinel module also assumes:
+
+- Access to the target Azure subscription
+- A valid Logic App workflow already exists for the configured `logic_app_id`
+
 ## Caution
 
 This repository appears suited for lab, learning, or internal demo use. Review the configuration before using it in a broader environment.
@@ -139,4 +188,5 @@ Current risks and cleanup items include:
 - Local-machine-specific SSH key paths
 - Demo-style group membership logic in the Entra ID module
 - Subscription-scope RBAC assignments
-- Terraform state files currently present under `azure/entraid`
+- Sentinel automation depends on an existing Logic App workflow path
+- Sentinel and Entra ID Terraform state files are currently present under their module folders
